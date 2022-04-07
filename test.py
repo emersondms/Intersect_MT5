@@ -14,7 +14,7 @@ if not mt5.initialize():
 # load properties file
 props = Properties()
 
-with open('order.properties', 'rb') as config_file:
+with open('request.properties', 'rb') as config_file:
     props.load(config_file)
 
 #============================================================================
@@ -30,7 +30,7 @@ number_of_positions_to_open -= number_of_positions_opened
 print (f"{number_of_positions_to_open} positions to open")
 
 #============================================================================
-stocks_dict = backtest_excel.get_stocks_dict(r"intersect_backtest.xlsx")
+stocks_dict = backtest_excel.get_stocks_dict(r"fishhook_backtest.xlsx")
 good_stocks_rates_df = stocks_dataframe.get_good_stocks_rates(mt5, stocks_dict)
 
 # sort the dataframe to get the best stocks 

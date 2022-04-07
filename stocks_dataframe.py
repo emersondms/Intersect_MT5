@@ -35,6 +35,7 @@ def get_all_stocks_rates(mt5_conn, stocks_dict):
     return all_stocks_df
 
 EXPECTED_CANDLE_TAIL_SIZE = 0.3
+
 def get_good_stocks_rates(mt5_conn, stocks_dict):
     """Filters the stocks that are matching with the strategy
     @param mt5_conn: MetaTrader5 connection object

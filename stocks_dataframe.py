@@ -3,9 +3,9 @@ import pandas as pd
 
 warnings.filterwarnings("ignore")
 
-def get_all_stock_rates(mt5_conn_obj, stocks_dict):
+def get_all_stocks_rates(mt5_conn, stocks_dict):
     """Extracts all stocks rates from a stock list
-    @param mt5_conn_obj: MetaTrader5 initialized object
+    @param mt5_conn: MetaTrader5 connection object
     @param stocks_dict: a dictionary with <stock_name, profit_factor>
     @returns: a dataframe populated with the stocks information     
     """
@@ -16,8 +16,8 @@ def get_all_stock_rates(mt5_conn_obj, stocks_dict):
 
     for stock in stocks_dict.keys():
         try: 
-            candle_info = mt5_conn_obj.copy_rates_from_pos(
-                stock, mt5_conn_obj.TIMEFRAME_D1, 0,1) # 0,1 = today candle
+            candle_info = mt5_conn.copy_rates_from_pos(
+                stock, mt5_conn.TIMEFRAME_D1, 0,1) # 0,1 = today candle
             open = float(candle_info[0][1])
             high = float(candle_info[0][2])
             low = float(candle_info[0][3])
@@ -34,9 +34,10 @@ def get_all_stock_rates(mt5_conn_obj, stocks_dict):
             continue
     return all_stocks_df
 
-def get_good_stocks_rates(mt5_conn_obj, stocks_dict):
+EXPECTED_CANDLE_TAIL_SIZE = 0.3
+def get_good_stocks_rates(mt5_conn, stocks_dict):
     """Filters the stocks that are matching with the strategy
-    @param mt5_conn_obj: MetaTrader5 initialized object
+    @param mt5_conn: MetaTrader5 connection object
     @param stocks_dict: a dictionary with <stock_name, profit_factor>
     @returns: a dataframe populated with the filtered stocks     
     """
@@ -44,8 +45,7 @@ def get_good_stocks_rates(mt5_conn_obj, stocks_dict):
     good_stocks_df = pd.DataFrame(columns=['OPEN', 'HIGH', 'LOW', 'CLOSE', 
         'PROFIT_FACTOR', 'DIFF_FROM_CLOSE_TO_HALF', 'DIFF_FROM_CLOSE_TO_LOW'])
     good_stocks_df.set_index(good_stocks_df.columns[0])
-    all_stocks_df = get_all_stock_rates(mt5_conn_obj, stocks_dict)
-    EXPECTED_CANDLE_TAIL_SIZE = 0.3
+    all_stocks_df = get_all_stocks_rates(mt5_conn, stocks_dict)
 
     for stock in stocks_dict.keys():
         try:

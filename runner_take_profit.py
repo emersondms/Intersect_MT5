@@ -12,7 +12,7 @@ logs.info("")
 logs.info(f">>> TAKE PROFIT")
 
 def email_logs_and_quit():
-    email_logs.send_email("TAKE PROFIT", "")
+    email_logs.send_email("[INTERSECT] TAKE PROFIT")
     quit()
 
 if (datetime_utils.get_current_day_of_week() == "Monday"):

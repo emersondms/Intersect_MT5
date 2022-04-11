@@ -38,7 +38,7 @@ def get_today_stocks_rates(mt5_conn, stocks_dict):
             high = float(candle_info[0][2])
             low = float(candle_info[0][3])
             close = float(candle_info[0][4])
-            profit_factor = stocks_dict[stock]
+            profit_factor = float(stocks_dict[stock])
 
             candle_half = round(((high + low) / 2), 2)
             diff_from_close_to_half = round((((candle_half - close) * 100) / candle_half), 1)

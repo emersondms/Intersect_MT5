@@ -12,8 +12,12 @@ logs.info("")
 logs.info(f">>> CLOSE POSITIONS")
 
 def email_logs_and_quit():
-    email_logs.send_email("CLOSE POSITIONS", "")
+    email_logs.send_email("[INTERSECT] CLOSE POSITIONS")
     quit()
+
+if (datetime_utils.get_current_day_of_week() == "Monday"):
+    logs.error("No positions were opened on friday")
+    email_logs_and_quit()
 
 if not mt5.initialize():
     logs.error("initialize() failed, error code = ", mt5.last_error())

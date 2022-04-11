@@ -17,23 +17,18 @@ email_port = 587
 #============================================================================
 today_date = '{:%Y-%m-%d}'.format(datetime.now())
 file_name = f'{today_date}.log'
-attach_file_path = f'logs\\{file_name}'
+file_path = f'logs\\{file_name}'
 
 #============================================================================
-def send_email(subject, body):
+def send_email(subject):
 	message = MIMEMultipart()
 	message['From'] = sender_email
 	message['To'] = receiver_email
 	message['Subject'] = subject
-	message.attach(MIMEText(body, 'plain'))
 
-	with open(attach_file_path, 'r') as file:
-		attach_file = file.read()
-		payload = MIMEBase('application', 'octate-stream')
-		payload.set_payload(attach_file)
-		encoders.encode_base64(payload) 
-		payload.add_header('Content-Disposition', 'attachment', filename=file_name)
-		message.attach(payload)
+	with open(file_path, 'r') as file:
+		file_text = file.read()
+		message.attach(MIMEText(file_text, 'plain'))
 
 	try:
 		session = smtplib.SMTP(email_host, email_port) 

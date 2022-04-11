@@ -10,10 +10,10 @@ import position
 
 #============================================================================
 logs.info("")
-logs.info(f">>> BUY")
+logs.info(f">>> BUY STOCKS")
 
 def email_logs_and_quit():
-    email_logs.send_email("BUY", "")
+    email_logs.send_email("[INTERSECT] BUY STOCKS")
     quit()
 
 # avoid being exposed on weekends
@@ -28,7 +28,6 @@ if not mt5.initialize():
 #============================================================================
 # load properties file
 props = Properties()
-
 with open('request.properties', 'rb') as config_file:
     props.load(config_file)
 
@@ -43,9 +42,6 @@ if (num_opened_positions >= num_positions_to_open):
 
 num_positions_to_open -= num_opened_positions
 logs.info(f"{num_positions_to_open} positions to open")
-
-# to wait for the last seconds of negotiation period
-datetime_utils.wait_for_time_to_be(16,54,30)
 
 #============================================================================
 stocks_dict = backtest_excel.get_stocks_dict()
@@ -82,6 +78,9 @@ logs.info(f"Stocks to buy: {stocks_to_buy}")
 #============================================================================
 # buy the stocks
 money_stake = float(props.get("MONEY_STAKE_FOR_EACH_POSITION").data)
+
+# to wait for the last seconds of negotiation period
+datetime_utils.wait_for_time_to_be(16,54,45)
 
 for stock in stocks_to_buy:
     closing_price = good_stocks_rates_df.loc[stock]['CLOSE']

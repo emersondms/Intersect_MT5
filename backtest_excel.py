@@ -1,11 +1,10 @@
 import xlrd
 
-def get_stocks_dict(excel_path):
+def get_stocks_dict():
     """Returns the backtest excel content
-    @param excel_path: backtest sheet path
     @returns stocks_dict: a dictionary with <stock_name, profit_factor> 
     """
-
+    excel_path = r"intersect_backtest.xlsx"
     worbook = xlrd.open_workbook(excel_path)
     sheet = worbook.sheet_by_index(0)
     stocks_dict = {}

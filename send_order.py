@@ -1,3 +1,6 @@
+from logger import logs
+import time
+
 def buy_at_market(mt5_conn, stock, lots):
     '''Sends a buy at market order
     @param mt5_conn: MetaTrader5 connection object
@@ -5,7 +8,6 @@ def buy_at_market(mt5_conn, stock, lots):
     @param lots: size as double, ex: 100.0
     @returns: the request result object
     '''
-
     request = {
         "symbol": stock, 
         "volume": lots,
@@ -16,14 +18,16 @@ def buy_at_market(mt5_conn, stock, lots):
     }
 
     try:
-        print(f"\n>>> BUY AT MARKET order sent: {request}")
+        logs.info(f"BUY AT MARKET order sent: {request}")
         result = mt5_conn.order_send(request) 
-        print(f"    RESULT: {result}")
-        return result.order
+        logs.info(f"RESULT: {result}")
+        time.sleep(1)
+        return result
     except:
-        print(f"    FAILED: {mt5_conn.last_error()}")
+        logs.error(f"FAILED: {mt5_conn.last_error()}")
     return ""
 
+#============================================================================
 def sell_limit(mt5_conn, stock, lots, price):
     '''Sends a sell limit order
     @param mt5_conn: MetaTrader5 connection object
@@ -31,8 +35,7 @@ def sell_limit(mt5_conn, stock, lots, price):
     @param lots: size as double, ex: 100.0
     @param price: sell price as float
     @returns: the request result object
-    '''
-    
+    ''' 
     request = { 
         "symbol": stock, 
         "volume": lots,
@@ -44,22 +47,23 @@ def sell_limit(mt5_conn, stock, lots, price):
     }
 
     try:
-        print(f"\n>>> SELL LIMIT order sent: {request}")
+        logs.info(f"SELL LIMIT order sent: {request}")
         result = mt5_conn.order_send(request) 
-        print(f"    RESULT: {result}")
-        return result.order
+        logs.info(f"RESULT: {result}")
+        time.sleep(1)
+        return result
     except:
-        print(f"    FAILED: {mt5_conn.last_error()}")
+        logs.error(f"FAILED: {mt5_conn.last_error()}")
     return ""
 
+#============================================================================
 def sell_at_market(mt5_conn, stock, lots):
     '''Sends a sell at market order
     @param mt5_conn: MetaTrader5 connection object
     @param stock: name
     @param lots: size as double, ex: 100.0
     @returns: the request result object
-    '''
-    
+    '''   
     request = { 
         "symbol": stock, 
         "volume": lots,
@@ -70,10 +74,11 @@ def sell_at_market(mt5_conn, stock, lots):
     }
 
     try:
-        print(f"\n>>> SELL AT MARKET order sent: {request}")
+        logs.info(f"SELL AT MARKET order sent: {request}")
         result = mt5_conn.order_send(request) 
-        print(f"    RESULT: {result}")
-        return result.order
+        logs.info(f"RESULT: {result}")
+        time.sleep(1)
+        return result
     except:
-        print(f"    FAILED: {mt5_conn.last_error()}")
+        logs.error(f"FAILED: {mt5_conn.last_error()}")
     return ""

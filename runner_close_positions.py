@@ -64,7 +64,7 @@ num_candles = 3 # before yesterday
 
 for stock in stocks_with_opened_position:
     # positions are not opened on weekends
-    if (current_day_of_week == "Monday") and (current_day_of_week == "Tuesday"): continue
+    if (current_day_of_week == "Monday") or (current_day_of_week == "Tuesday"): continue
 
     rates_df = rates_dataframe.get_stock_rates(mt5, stock, num_candles)
     before_yesterday_open_date = datetime_utils.remove_time(rates_df.iloc[2]['time'])

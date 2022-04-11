@@ -44,6 +44,9 @@ if (num_opened_positions >= num_positions_to_open):
 num_positions_to_open -= num_opened_positions
 logs.info(f"{num_positions_to_open} positions to open")
 
+# to wait for the last seconds of negotiation period
+datetime_utils.wait_for_time_to_be(16,54,30)
+
 #============================================================================
 stocks_dict = backtest_excel.get_stocks_dict()
 good_stocks_rates_df = rates_dataframe.get_good_stocks_rates(mt5, stocks_dict)

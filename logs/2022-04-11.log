@@ -2,7 +2,7 @@
 2022-04-11 18:23:24,644 | INFO | >>> BUY
 2022-04-11 18:23:24,650 | INFO | 3 positions already opened
 2022-04-11 18:23:24,650 | INFO | 3 positions to open
-2022-04-11 18:23:26,155 | INFO | 
+2022-04-11 18:23:26,155 | INFO |  
          OPEN   HIGH    LOW  CLOSE PROFIT_FACTOR DIFF_FROM_CLOSE_TO_HALF DIFF_FROM_CLOSE_TO_LOW
 AALR3    18.4  18.69  18.13  18.29          4.09                     0.7                    0.9
 JBSS3   38.73  39.25  38.02   38.1           3.7                     1.4                    0.2

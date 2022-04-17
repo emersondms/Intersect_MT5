@@ -1,7 +1,7 @@
 from logger import logs
 import MetaTrader5 as mt5
 import email_logs
-import backtest_excel 
+import backtest_data 
 import rates_dataframe
 import send_order
 import position
@@ -15,8 +15,11 @@ def email_logs_and_quit():
     email_logs.send_email("[INTERSECT] TAKE PROFIT")
     quit()
 
-if (datetime_utils.get_current_day_of_week() == "Monday"):
-    logs.error("No positions were opened on friday")
+# to not execute it on weekends
+current_day_of_week = datetime_utils.get_current_day_of_week()
+invalid_days = ["Saturday", "Sunday", "Monday"]
+if (current_day_of_week in invalid_days):
+    logs.error("Invalid date, exiting...")
     email_logs_and_quit()
 
 if not mt5.initialize():
@@ -24,7 +27,7 @@ if not mt5.initialize():
     email_logs_and_quit()
 
 #============================================================================
-stocks_dict = backtest_excel.get_stocks_dict()
+stocks_dict = backtest_data.get_stocks_dict()
 stocks_with_position_opened = position.get_stocks_with_opened_position(mt5, stocks_dict)
 today_date = datetime_utils.remove_time(datetime_utils.get_today_datetime())
 num_candles = 2 # today and yesterday

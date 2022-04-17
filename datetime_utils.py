@@ -24,6 +24,5 @@ def get_today_time_at(hr, min=0, sec=0):
 def wait_for_time_to_be(hr, min=0, sec=0):
     expected_time = get_today_time_at(hr, min, sec)
     logs.info(f"Waiting for time to be {expected_time}")
-
     while (get_today_datetime() < expected_time):
         time.sleep(1)

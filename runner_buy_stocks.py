@@ -21,7 +21,7 @@ current_day_of_week = datetime_utils.get_current_day_of_week()
 invalid_days = ["Friday", "Saturday", "Sunday"]
 if (current_day_of_week in invalid_days):
     logs.error("Invalid date, exiting...")
-    #email_logs_and_quit()
+    email_logs_and_quit()
 
 if not mt5.initialize():
     logs.error("initialize() failed, error code = ", mt5.last_error())

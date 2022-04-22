@@ -1,0 +1,20 @@
+2022-04-20 10:00:25,416 | INFO | 
+2022-04-20 10:00:25,416 | INFO | >>> TAKE PROFIT
+2022-04-20 10:01:01,000 | INFO | BRSR6 profit at yesterday half
+2022-04-20 10:01:01,000 | INFO | SELL LIMIT order sent: {'symbol': 'BRSR6', 'volume': 900.0, 'price': 11.0, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-04-20 10:01:01,046 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1154862126, volume=900.0, price=0.0, bid=0.0, ask=0.0, comment='Request executed', request_id=1, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='BRSR6', volume=900.0, price=11.0, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-04-20 10:01:02,060 | INFO | TRPL4 profit at yesterday half
+2022-04-20 10:01:02,060 | INFO | SELL LIMIT order sent: {'symbol': 'TRPL4', 'volume': 300.0, 'price': 26.22, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-04-20 10:01:02,107 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1154862166, volume=300.0, price=0.0, bid=0.0, ask=0.0, comment='Request executed', request_id=2, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='TRPL4', volume=300.0, price=26.22, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-04-20 10:01:03,199 | INFO | VIVT3 profit at yesterday half
+2022-04-20 10:01:03,199 | INFO | SELL LIMIT order sent: {'symbol': 'VIVT3', 'volume': 100.0, 'price': 53.05, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-04-20 10:01:03,246 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1154862223, volume=100.0, price=0.0, bid=0.0, ask=0.0, comment='Request executed', request_id=3, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='VIVT3', volume=100.0, price=53.05, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-04-20 10:01:08,893 | INFO | Email sent
+2022-04-20 16:45:25,092 | INFO | 
+2022-04-20 16:45:25,100 | INFO | >>> CLOSE POSITIONS
+2022-04-20 16:45:52,543 | INFO | Closing positions: ['BRSR6', 'TRPL4']
+2022-04-20 16:45:52,543 | INFO | SELL AT MARKET order sent: {'symbol': 'BRSR6', 'volume': 900.0, 'type': 1, 'action': 1, 'type_time': 1, 'type_filling': 2}
+2022-04-20 16:45:52,645 | INFO | RESULT: OrderSendResult(retcode=10009, deal=875947588, order=1155888511, volume=900.0, price=10.84, bid=10.84, ask=10.85, comment='Request executed', request_id=1, retcode_external=0, request=TradeRequest(action=1, magic=0, order=0, symbol='BRSR6', volume=900.0, price=0.0, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=1, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-04-20 16:45:53,648 | INFO | SELL AT MARKET order sent: {'symbol': 'TRPL4', 'volume': 300.0, 'type': 1, 'action': 1, 'type_time': 1, 'type_filling': 2}
+2022-04-20 16:45:53,703 | INFO | RESULT: OrderSendResult(retcode=10009, deal=875947597, order=1155888524, volume=300.0, price=25.95, bid=25.95, ask=25.96, comment='Request executed', request_id=2, retcode_external=0, request=TradeRequest(action=1, magic=0, order=0, symbol='TRPL4', volume=300.0, price=0.0, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=1, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-04-20 16:46:00,136 | INFO | Email sent

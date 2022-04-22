@@ -19,7 +19,7 @@ def email_logs_and_quit():
 current_day_of_week = datetime_utils.get_current_day_of_week()
 invalid_days = ["Saturday", "Sunday", "Monday"]
 if (current_day_of_week in invalid_days):
-    logs.error("Invalid date, exiting...")
+    logs.error("Invalid day, exiting...")
     email_logs_and_quit()
 
 if not mt5.initialize():

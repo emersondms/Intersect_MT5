@@ -20,7 +20,7 @@ def email_logs_and_quit():
 current_day_of_week = datetime_utils.get_current_day_of_week()
 invalid_days = ["Friday", "Saturday", "Sunday"]
 if (current_day_of_week in invalid_days):
-    logs.error("Invalid date, exiting...")
+    logs.error("Invalid day, exiting...")
     email_logs_and_quit()
 
 if not mt5.initialize():
@@ -30,7 +30,7 @@ if not mt5.initialize():
 #============================================================================
 # load properties file
 props = Properties()
-with open('request.properties', 'rb') as config_file:
+with open('strategy.properties', 'rb') as config_file:
     props.load(config_file)
 
 #============================================================================
@@ -82,7 +82,7 @@ logs.info(f"Stocks to buy: {stocks_to_buy}")
 money_stake = float(props.get("MONEY_STAKE_FOR_EACH_POSITION").data)
 
 # to wait for the last seconds of negotiation period
-datetime_utils.wait_for_time_to_be(16,54,30)
+datetime_utils.wait_for_time_to_be(16,54,45)
 
 # buy the stocks
 for stock in stocks_to_buy:

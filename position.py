@@ -7,7 +7,7 @@ def get_position_lots(mt5_conn, stock):
     positions_opened = mt5_conn.positions_get(symbol=stock)
     position_size = 0
 
-    if not positions_opened == None:
+    if positions_opened != None:
         if len(positions_opened) > 0:
             position_size = float(positions_opened[0].volume)
 
@@ -54,7 +54,7 @@ def get_position_open_timestamp(mt5_conn, stock):
     positions_opened = mt5_conn.positions_get(symbol=stock)
     open_timestamp = 0
 
-    if not positions_opened == None:
+    if positions_opened != None:
         if len(positions_opened) > 0:
             open_timestamp = positions_opened[0].time
 

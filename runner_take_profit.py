@@ -19,7 +19,7 @@ def email_logs_and_quit():
 current_day_of_week = datetime_utils.get_current_day_of_week()
 invalid_days = ["Saturday", "Sunday", "Monday"]
 if (current_day_of_week in invalid_days):
-    logs.error("Invalid date, exiting...")
+    logs.error("Invalid day, exiting...")
     email_logs_and_quit()
 
 if not mt5.initialize():
@@ -52,10 +52,10 @@ for stock in stocks_with_position_opened:
     one_percent = yesterday_close * 1.01
     if (yesterday_half <= one_percent): 
         target_price = yesterday_half
-        logs.info(f"{stock} profit at yesterday half")
+        logs.info(f"{stock} profit at yesterday half: {target_price}")
     else:
         target_price = one_percent
-        logs.info(f"{stock} profit at 1%")
+        logs.info(f"{stock} profit at 1%: {target_price}")
 
     lots = position.get_position_lots(mt5, stock)
     send_order.sell_limit(mt5, stock, lots, target_price)

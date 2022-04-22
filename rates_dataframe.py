@@ -23,7 +23,7 @@ def get_stock_rates(mt5_conn, stock, num_candles):
 
 #============================================================================
 def get_today_stocks_rates(mt5_conn, stocks_dict):
-    '''Returns today stocks rates from a stock list
+    '''Returns today stocks rates for the given stocks list
     @param mt5_conn: MetaTrader5 connection object
     @param stocks_dict: a dictionary with <stock_name, profit_factor>
     @returns rates_df: a dataframe with the stocks information     
@@ -64,6 +64,7 @@ def get_good_stocks_rates(stocks_df):
     good_stocks_df = pd.DataFrame(columns=['OPEN', 'HIGH', 'LOW', 'CLOSE', 
         'PROFIT_FACTOR', 'DIFF_FROM_CLOSE_TO_HALF'])#, 'DIFF_FROM_CLOSE_TO_LOW'])
     good_stocks_df.set_index(good_stocks_df.columns[0])
+
     MAX_CANDLE_TAIL_SIZE = 0.3
 
     for row in range(0, len(stocks_df)):
@@ -75,7 +76,7 @@ def get_good_stocks_rates(stocks_df):
             open = float(stock_data['OPEN'])
             candle_size = high - low
 
-            # The stock matches the strategy if the closing price is near the low price
+            # check if the closing price is near the low price
             strategy_matching = ((close - low) < (candle_size * 
                 MAX_CANDLE_TAIL_SIZE)) and (close < open)
             if (strategy_matching): 

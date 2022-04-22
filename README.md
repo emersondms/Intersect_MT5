@@ -24,7 +24,7 @@ Trading bot for the MetaTrader 5 platform
 - Number of stocks to be bought at market: **strategy.properties\NUMBER_OF_POSITIONS_TO_OPEN** 
 - If an already bought stock is matching the strategy again, it will have priority (to decrease the medium price);
 - Money amount to be invested for each stock: **strategy.properties\MONEY_STAKE_FOR_EACH_POSITION**
-**The property above** and the **stock closing price** will be considered to calculate the **lots size** to be applied.
+- **The property above** and the **stock closing price** will be considered to calculate the **lots size** to be applied.
 
 ## runner_take_profit.py
 

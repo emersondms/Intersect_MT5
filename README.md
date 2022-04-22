@@ -7,7 +7,7 @@ Trading bot for the MetaTrader 5 platform
 ![Example](https://user-images.githubusercontent.com/7670466/164803205-d46f4ad5-2a21-4632-86b8-2690ff80e027.png)
 
 - The script will sort the stocks from **intersect_backtest.csv (2021)** by the **highest profit factor**;
-- Only daily candles (D1) are considered;
+- Only daily candles (D1) are considered.
 
 # Setup
     - Python 3.8;

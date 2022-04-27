@@ -32,6 +32,8 @@ stocks_with_position_opened = position.get_stocks_with_opened_position(mt5, stoc
 today_date = datetime_utils.remove_time(datetime_utils.get_today_datetime())
 num_candles = 2 # today and yesterday
 
+logs.info(f"Positions opened: {stocks_with_position_opened}")
+
 #============================================================================
 # open sell orders on yesterday's half price or profit 1%
 for stock in stocks_with_position_opened:

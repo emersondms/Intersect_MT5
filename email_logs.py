@@ -1,3 +1,4 @@
+from jproperties import Properties
 import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -6,11 +7,16 @@ from datetime import datetime
 from logger import logs
 
 #============================================================================
-sender_email = os.environ['SENDER_EMAIL']
-sender_pass = os.environ['SENDER_PASSWORD']
-receiver_email = os.environ['RECEIVER_EMAIL']
-email_host = 'smtp.gmail.com'
-email_port = 587
+# load properties file
+props = Properties()
+with open('strategy.properties', 'rb') as config_file:
+    props.load(config_file)
+
+sender_email = props.get("SENDER_EMAIL").data
+sender_pass = props.get("SENDER_EMAIL_PASSWORD").data
+receiver_email = props.get("RECEIVER_EMAIL").data
+email_host = props.get("SENDER_EMAIL_HOST").data
+email_port = int(props.get("SENDER_EMAIL_PORT").data)
 
 #============================================================================
 today_date = '{:%Y-%m-%d}'.format(datetime.now())

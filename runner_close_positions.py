@@ -16,9 +16,9 @@ def email_logs_and_quit():
     quit()
 
 # to not execute it on weekends
-current_day_of_week = datetime_utils.get_current_day_of_week()
+today = datetime_utils.get_current_day_of_week()
 invalid_days = ["Saturday", "Sunday", "Monday"]
-if (current_day_of_week in invalid_days):
+if (today in invalid_days):
     logs.error("Invalid day, exiting...")
     email_logs_and_quit()
 
@@ -39,7 +39,7 @@ def close_positions(stocks_list):
 
 #============================================================================
 # close all positions on fridays
-if (current_day_of_week == "Friday"):
+if (today == "Friday"):
     logs.info("Today is friday, closing all positions...")
 
     for stock in stocks_with_opened_position:
@@ -68,8 +68,7 @@ for stock in stocks_with_opened_position:
 # close positions opened 2 days ago
 num_candles = 3 # before yesterday
 
-# positions are not opened on weekends
-if (current_day_of_week != "Monday") and (current_day_of_week != "Tuesday"):
+if (today != "Monday") and (today != "Tuesday"): # positions are not opened on weekends
     for stock in stocks_with_opened_position:
         rates_df = rates_dataframe.get_stock_rates(mt5, stock, num_candles)
         before_yesterday_open_date = datetime_utils.remove_time(rates_df.iloc[2]['time'])

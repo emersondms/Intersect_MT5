@@ -1,0 +1,10 @@
+2022-04-28 10:00:32,782 | INFO | 
+2022-04-28 10:00:32,798 | INFO | >>> TAKE PROFIT
+2022-04-28 10:00:53,677 | INFO | Positions opened: ['BPAC11', 'HYPE3']
+2022-04-28 10:01:03,907 | INFO | BPAC11 profit at yesterday half: 24.04
+2022-04-28 10:01:03,908 | INFO | SELL LIMIT order sent: {'symbol': 'BPAC11', 'volume': 200.0, 'price': 24.04, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-04-28 10:01:05,658 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1834039590, volume=200.0, price=24.04, bid=0.0, ask=0.0, comment='Request executed', request_id=1, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='BPAC11', volume=200.0, price=24.04, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-04-28 10:01:06,855 | INFO | HYPE3 profit at yesterday half: 37.24
+2022-04-28 10:01:06,855 | INFO | SELL LIMIT order sent: {'symbol': 'HYPE3', 'volume': 100.0, 'price': 37.24, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-04-28 10:01:07,067 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1834039696, volume=100.0, price=37.24, bid=0.0, ask=0.0, comment='Request executed', request_id=2, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='HYPE3', volume=100.0, price=37.24, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-04-28 10:01:17,559 | INFO | Email sent

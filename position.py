@@ -1,5 +1,5 @@
 def get_position_lots(mt5_conn, stock):
-    '''Returns the position lots size for the stock
+    '''Returns the size of lots for the position
     @param mt5_conn: MetaTrader5 connection object
     @param stock: name
     @returns position_size: as float
@@ -15,7 +15,7 @@ def get_position_lots(mt5_conn, stock):
 
 #============================================================================
 def calculate_lots_size(money_stake, stock_price):
-    '''Returns the lots size for the given values
+    '''Returns the size of lots for the given values
     @param money_stake: amount of money as int
     @param stock_price: as float
     @returns lots_size: as float

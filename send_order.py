@@ -2,7 +2,7 @@ from logger import logs
 import time
 
 def buy_at_market(mt5_conn, stock, lots):
-    '''Sends a buy at market order
+    '''Sends a 'buy at market' order
     @param mt5_conn: MetaTrader5 connection object
     @param stock: name
     @param lots: size as double, ex: 100.0
@@ -29,7 +29,7 @@ def buy_at_market(mt5_conn, stock, lots):
 
 #============================================================================
 def sell_limit(mt5_conn, stock, lots, price):
-    '''Sends a sell limit order
+    '''Sends a 'sell limit' order
     @param mt5_conn: MetaTrader5 connection object
     @param stock: name
     @param lots: size as double, ex: 100.0
@@ -58,7 +58,7 @@ def sell_limit(mt5_conn, stock, lots, price):
 
 #============================================================================
 def sell_at_market(mt5_conn, stock, lots):
-    '''Sends a sell at market order
+    '''Sends a 'sell at market' order
     @param mt5_conn: MetaTrader5 connection object
     @param stock: name
     @param lots: size as double, ex: 100.0

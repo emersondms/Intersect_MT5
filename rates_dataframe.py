@@ -23,7 +23,7 @@ def get_stock_rates(mt5_conn, stock, num_candles):
 
 #============================================================================
 def get_today_stocks_rates(mt5_conn, stocks_dict):
-    '''Returns today stocks rates for the given stocks list
+    '''Returns today's stocks rates for the given stocks list
     @param mt5_conn: MetaTrader5 connection object
     @param stocks_dict: a dictionary with <stock_name, profit_factor>
     @returns rates_df: a dataframe with the stocks information     

@@ -44,7 +44,8 @@ def get_today_stocks_rates(mt5_conn, stocks_dict):
         high = float(candle_info[0][2])
         low = float(candle_info[0][3])
         close = float(candle_info[0][4])
-        profit_factor = round((float(stocks_dict[stock])), 1)
+        #profit_factor = round((float(stocks_dict[stock])), 1)
+        profit_factor = int(float(stocks_dict[stock]))
 
         candle_half = round(((high + low) / 2), 2)
         diff_from_close_to_half = round((((candle_half - close) * 100) / candle_half), 1)
@@ -65,20 +66,16 @@ def get_good_stocks_rates(stocks_df):
         'PROFIT_FACTOR', 'DIFF_FROM_CLOSE_TO_HALF'])#, 'DIFF_FROM_CLOSE_TO_LOW'])
     good_stocks_df.set_index(good_stocks_df.columns[0])
 
-    MAX_CANDLE_TAIL_SIZE = 0.3
-
     for row in range(0, len(stocks_df)):
         try:
             stock_data = stocks_df.iloc[row]
             high = float(stock_data['HIGH'])
             low = float(stock_data['LOW'])
             close = float(stock_data['CLOSE'])
-            open = float(stock_data['OPEN'])
-            candle_size = high - low
+            candle_20_percent = (high - low) / 5
 
             # check if the closing price is near the low price
-            strategy_matching = ((close - low) < (candle_size * 
-                MAX_CANDLE_TAIL_SIZE)) and (close < open)
+            strategy_matching = (close - low) < candle_20_percent
             if (strategy_matching): 
                 good_stocks_df = good_stocks_df.append(stock_data)
         except:
@@ -86,4 +83,18 @@ def get_good_stocks_rates(stocks_df):
         
     return good_stocks_df
 
+#============================================================================
+def get_percent_diff_from_half_to_low(high, low):
+    candle_half = (high + low) / 2
+    percent_diff_from_half_to_low = ((candle_half - low) * 100) / candle_half
+    return percent_diff_from_half_to_low
 
+def get_avg_of_percent_diff_from_half_to_low(rates_df, avg_period):
+    total = 0
+    for day in range(avg_period):
+        high = rates_df.iloc[day]['high']
+        low = rates_df.iloc[day]['low']
+        total += get_percent_diff_from_half_to_low(high, low)
+    
+    avg = total / avg_period
+    return avg 

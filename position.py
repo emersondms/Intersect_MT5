@@ -5,11 +5,14 @@ def get_position_lots(mt5_conn, stock):
     @returns position_size: as float
     '''
     positions_opened = mt5_conn.positions_get(symbol=stock)
+    BUY_POSITION_TYPE = 0
     position_size = 0
-
+    
     if positions_opened != None:
         if len(positions_opened) > 0:
-            position_size = float(positions_opened[0].volume)
+            pos = positions_opened[0]
+            if (pos.type == BUY_POSITION_TYPE):
+                position_size = float(pos.volume)
 
     return position_size
 

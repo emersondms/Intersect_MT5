@@ -57,7 +57,7 @@ good_stocks_rates_df = good_stocks_rates_df.sort_values(
 logs.info(f"\n{good_stocks_rates_df}")
 
 #============================================================================
-# check if an already opened position is good for medium price
+# check if an already opened position is good for average price
 stocks_to_buy = []
 
 for row in range(0, len(good_stocks_rates_df)):
@@ -82,7 +82,7 @@ logs.info(f"Stocks to buy: {stocks_to_buy}")
 money_stake = float(props.get("MONEY_STAKE_FOR_EACH_POSITION").data)
 
 # to wait for the last seconds of negotiation period
-datetime_utils.wait_for_time_to_be(16,54,45)
+#datetime_utils.wait_for_time_to_be(16,54,45)
 
 # buy the stocks
 for stock in stocks_to_buy:

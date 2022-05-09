@@ -24,18 +24,18 @@ if (today in invalid_days):
 
 if not mt5.initialize():
     logs.error("initialize() failed, error code = ", mt5.last_error())
-    email_logs_and_quit()
+    email_logs_and_quit()   
 
 #============================================================================
+# calcutate the target price and then open sell orders
+
 stocks_dict = backtest_data.get_stocks_dict()
 stocks_with_position_opened = position.get_stocks_with_opened_position(mt5, stocks_dict)
-today_date = datetime_utils.remove_time(datetime_utils.get_today_datetime())
-num_candles = 2 # today and yesterday
-
 logs.info(f"Positions opened: {stocks_with_position_opened}")
 
-#============================================================================
-# open sell orders on yesterday's half price or profit 1%
+today_date = datetime_utils.remove_time(datetime_utils.get_today_datetime())
+num_candles = 20
+
 for stock in stocks_with_position_opened:
     rates_df = rates_dataframe.get_stock_rates(mt5, stock, num_candles)
     first_row_date = datetime_utils.remove_time(rates_df.iloc[0]['time'])
@@ -50,15 +50,18 @@ for stock in stocks_with_position_opened:
     yesterday_close = float(yesterday_rates['close'])
     yesterday_half = round(((yesterday_high + yesterday_low) / 2), 2)
 
-    # calculate target sell price
-    one_percent = yesterday_close * 1.01
-    if (yesterday_half <= one_percent): 
-        target_price = yesterday_half
-        logs.info(f"{stock} profit at yesterday half: {target_price}")
-    else:
-        target_price = one_percent
-        logs.info(f"{stock} profit at 1%: {target_price}")
+    # calculate the target sell price based on stock volatility  
+    target_price = yesterday_close * 1.01
+    avg_diff_from_half_to_low = rates_dataframe.get_avg_of_percent_diff_from_half_to_low(
+        rates_df, num_candles)
+        
+    if (avg_diff_from_half_to_low < 1): 
+        target_price = yesterday_close * 1.005  
 
+    if (yesterday_half <= target_price): 
+        target_price = yesterday_half
+
+    logs.info(f"{stock} profit at: {target_price}")
     lots = position.get_position_lots(mt5, stock)
     send_order.sell_limit(mt5, stock, lots, target_price)
 

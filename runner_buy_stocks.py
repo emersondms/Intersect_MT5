@@ -47,21 +47,23 @@ logs.info(f"{num_positions_to_open} positions to open")
 
 #============================================================================
 stocks_dict = backtest_data.get_stocks_dict()
-today_stocks_rates_df = rates_dataframe.get_today_stocks_rates(mt5, stocks_dict)
-good_stocks_rates_df = rates_dataframe.get_good_stocks_rates(today_stocks_rates_df)
+today_stocks_df = rates_dataframe.get_today_stocks_rates(mt5, stocks_dict)
+good_stocks_df = rates_dataframe.get_good_stocks_rates(today_stocks_df)
 
 # sort the dataframe to get the best stocks 
-good_stocks_rates_df = good_stocks_rates_df.sort_values(
-    by=['PROFIT_FACTOR', 'DIFF_FROM_CLOSE_TO_HALF'], ascending=False)
+good_stocks_df = good_stocks_df.sort_values(
+    by=['PROFIT_FACTOR', 'PERC_DIFF_FROM_CLOSE_TO_HALF'], ascending=False)
 
-logs.info(f"\n{good_stocks_rates_df}")
+logs.info(f"\n{good_stocks_df}")
+if (good_stocks_df.empty):
+    email_logs_and_quit()
 
 #============================================================================
-# check if an already opened position is good for average price
+# check if an already opened position is good for decreasing the average price
 stocks_to_buy = []
 
-for row in range(0, len(good_stocks_rates_df)):
-    stock = good_stocks_rates_df.iloc[row].name
+for row in range(0, len(good_stocks_df)):
+    stock = good_stocks_df.iloc[row].name
     if (position.get_position_lots(mt5, stock) > 0):
         stocks_to_buy.append(stock)
 
@@ -70,7 +72,7 @@ for row in range(0, len(good_stocks_rates_df)):
 row_index = 0
 
 while not (len(stocks_to_buy) == num_positions_to_open):
-    stock = good_stocks_rates_df.iloc[row_index].name
+    stock = good_stocks_df.iloc[row_index].name
     if (not stock in stocks_to_buy):
         stocks_to_buy.append(stock)
     else:
@@ -86,7 +88,7 @@ money_stake = float(props.get("MONEY_STAKE_FOR_EACH_POSITION").data)
 
 # buy the stocks
 for stock in stocks_to_buy:
-    closing_price = good_stocks_rates_df.loc[stock]['CLOSE']
+    closing_price = good_stocks_df.loc[stock]['CLOSE']
     lots = position.calculate_lots_size(money_stake, closing_price)
     send_order.buy_at_market(mt5, stock, lots)
 

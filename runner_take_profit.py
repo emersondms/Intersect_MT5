@@ -34,7 +34,7 @@ stocks_with_position_opened = position.get_stocks_with_opened_position(mt5, stoc
 logs.info(f"Positions opened: {stocks_with_position_opened}")
 
 today_date = datetime_utils.remove_time(datetime_utils.get_today_datetime())
-num_candles = 20
+num_candles = 3 
 
 for stock in stocks_with_position_opened:
     rates_df = rates_dataframe.get_stock_rates(mt5, stock, num_candles)
@@ -52,7 +52,7 @@ for stock in stocks_with_position_opened:
 
     # calculate the target sell price based on stock volatility  
     target_price = yesterday_close * 1.01
-    avg_diff_from_half_to_low = rates_dataframe.get_avg_of_percent_diff_from_half_to_low(
+    avg_diff_from_half_to_low = rates_dataframe.get_avg_of_perc_diff_from_half_to_low(
         rates_df, num_candles)
         
     if (avg_diff_from_half_to_low < 1): 

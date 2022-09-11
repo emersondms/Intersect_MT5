@@ -18,7 +18,7 @@ def email_logs_and_quit():
 
 # to not execute it on weekends
 today = datetime_utils.get_current_day_of_week()
-invalid_days = ["Friday", "Saturday", "Sunday"]
+invalid_days = ["Saturday", "Sunday"]
 if (today in invalid_days):
     logs.error("Invalid day, exiting...")
     email_logs_and_quit()
@@ -59,7 +59,7 @@ if (good_stocks_df.empty):
     email_logs_and_quit()
 
 #============================================================================
-# check if an already opened position is good for decreasing the average price
+# check if an already opened position is good (for decreasing the average price)
 stocks_to_buy = []
 
 for row in range(0, len(good_stocks_df)):
@@ -71,12 +71,15 @@ for row in range(0, len(good_stocks_df)):
 # fill the stocks_to_buy array
 row_index = 0
 
+if (len(good_stocks_df) < num_positions_to_open):
+    num_positions_to_open = len(good_stocks_df)    
+
 while not (len(stocks_to_buy) == num_positions_to_open):
     stock = good_stocks_df.iloc[row_index].name
     if (not stock in stocks_to_buy):
         stocks_to_buy.append(stock)
     else:
-        row_index += 1    
+        row_index += 1 
 
 logs.info(f"Stocks to buy: {stocks_to_buy}")
 

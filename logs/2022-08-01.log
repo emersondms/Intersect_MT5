@@ -1,0 +1,17 @@
+2022-08-01 10:00:20,485 | INFO | 
+2022-08-01 10:00:20,485 | INFO | >>> TAKE PROFIT
+2022-08-01 10:00:48,511 | INFO | Positions opened: ['B3SA3', 'CCRO3', 'VIVT3']
+2022-08-01 10:00:50,990 | INFO | B3SA3 profit at: 11.21
+2022-08-01 10:00:50,990 | INFO | SELL LIMIT order sent: {'symbol': 'B3SA3', 'volume': 400.0, 'price': 11.21, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-08-01 10:00:54,194 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1991988482, volume=400.0, price=11.21, bid=0.0, ask=0.0, comment='Request executed', request_id=1, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='B3SA3', volume=400.0, price=11.21, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-08-01 10:00:56,798 | INFO | CCRO3 profit at: 13.02
+2022-08-01 10:00:56,798 | INFO | SELL LIMIT order sent: {'symbol': 'CCRO3', 'volume': 300.0, 'price': 13.02, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-08-01 10:00:59,984 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1991989417, volume=300.0, price=13.02, bid=0.0, ask=0.0, comment='Request executed', request_id=2, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='CCRO3', volume=300.0, price=13.02, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-08-01 10:01:01,037 | INFO | VIVT3 profit at: 44.83
+2022-08-01 10:01:01,037 | INFO | SELL LIMIT order sent: {'symbol': 'VIVT3', 'volume': 100.0, 'price': 44.83, 'type': 3, 'action': 5, 'type_time': 1, 'type_filling': 2}
+2022-08-01 10:01:02,415 | INFO | RESULT: OrderSendResult(retcode=10009, deal=0, order=1991989963, volume=100.0, price=44.83, bid=0.0, ask=0.0, comment='Request executed', request_id=3, retcode_external=0, request=TradeRequest(action=5, magic=0, order=0, symbol='VIVT3', volume=100.0, price=44.83, stoplimit=0.0, sl=0.0, tp=0.0, deviation=0, type=3, type_filling=2, type_time=1, expiration=0, comment='', position=0, position_by=0))
+2022-08-01 10:01:07,260 | INFO | Email sent
+2022-08-01 16:45:17,796 | INFO | 
+2022-08-01 16:45:17,812 | INFO | >>> CLOSE POSITIONS
+2022-08-01 16:45:18,716 | INFO | Closing positions: []
+2022-08-01 16:45:22,367 | INFO | Email sent

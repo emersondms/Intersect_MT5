@@ -17,7 +17,7 @@ def email_logs_and_quit():
 
 # to not execute it on weekends
 today = datetime_utils.get_current_day_of_week()
-invalid_days = ["Saturday", "Sunday", "Monday"]
+invalid_days = ["Saturday", "Sunday"]
 if (today in invalid_days):
     logs.error("Invalid day, exiting...")
     email_logs_and_quit()

@@ -47,19 +47,8 @@ for stock in stocks_with_position_opened:
     
     yesterday_high = float(yesterday_rates['high'])
     yesterday_low = float(yesterday_rates['low'])
-    yesterday_close = float(yesterday_rates['close'])
-    yesterday_half = round(((yesterday_high + yesterday_low) / 2), 2)
-
-    # calculate the target sell price based on stock volatility  
-    target_price = yesterday_close * 1.01
-    avg_diff_from_half_to_low = rates_dataframe.get_avg_of_perc_diff_from_half_to_low(
-        rates_df, num_candles)
-        
-    if (avg_diff_from_half_to_low < 1): 
-        target_price = yesterday_close * 1.005  
-
-    if (yesterday_half <= target_price): 
-        target_price = yesterday_half
+    yesterday_half = round(((yesterday_high + yesterday_low) / 2), 2) 
+    target_price = yesterday_half
 
     logs.info(f"{stock} profit at: {target_price}")
     lots = position.get_position_lots(mt5, stock)
